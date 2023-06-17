@@ -6,4 +6,4 @@
   * https://github.com/2mook2/Dementia_Analysis
 * 이미지 처리에 관심이 있습니다.
 * 현재 공부 중인 내용을 기록하는 블로그입니다.
-  * 2mook2.vercel.app
+  * https://2mook2.vercel.app/
