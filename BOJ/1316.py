@@ -1,4 +1,4 @@
-# BOJ 10798번
+# BOJ 1316번
 def group(string):
     # 각 알파벳에 대한 방문 여부
     chars = [False] * 26
