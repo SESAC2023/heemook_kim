@@ -24,21 +24,19 @@ visited = [False] * (n + 1)
 # BFS 시작
 queue = deque()
 queue.append(r)
-order = 1
+
 answer = [0] * (n + 1)
 
-visited[r] = True
-answer[r] = order
-
+order = 1
 while queue:
     x = queue.popleft()
     visited[x] = True
+    answer[x] = order
+    order += 1
     
     for y in graph[x]:
         if not visited[y]:
             visited[y] = True
-            order += 1
-            answer[y] = order
             queue.append(y)
 
 for _ in range(1, n + 1):
