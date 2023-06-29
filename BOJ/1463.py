@@ -1,4 +1,4 @@
-#  BOj 1463번
+#  BOJ 1463번
 n = int(input())
 
 dp = [0] * (int(1e6) + 1) 
