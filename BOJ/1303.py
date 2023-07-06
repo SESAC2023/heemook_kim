@@ -1,5 +1,5 @@
 # BOJ 1303번
-n, m = map(int, input().split())
+n, m = map(int, input().split()) # 가로 세로 잘 확인하자! => 행, 열로 생각하면 쉬움!
 
 graph = [list(input()) for _ in range(m)]
 
@@ -7,7 +7,7 @@ visited = [[0] * n for _ in range(m)]
 
 def dfs(x, y, color):
     global cnt
-    if x < 0 or x >= m or y < 0 or y >= n: # 가로 세로 잘 확인하자!
+    if x < 0 or x >= m or y < 0 or y >= n: 
         return False
     
     if not visited[x][y] and graph[x][y] == color:
@@ -22,8 +22,8 @@ def dfs(x, y, color):
 
 result_w = 0
 result_b = 0
-for i in range(m): # 가로 세로 잘 확인하자!
-    for j in range(n): # 가로 세로 잘 확인하자!
+for i in range(m):
+    for j in range(n):
         cnt = 0
         if not visited[i][j] and dfs(i, j, 'W'):
             result_w += cnt ** 2
