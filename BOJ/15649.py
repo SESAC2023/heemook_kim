@@ -14,24 +14,25 @@
 -------------------------------------
 # BOJ 15649번
 n, m = map(int, input().split())
-
-visited = [False] * (n + 1)
+arr = [_ for _ in range(1, n + 1)]
+visited = [False] * n
 
 selected = []
 
 def backtracking(depth):
     if depth == m:
-        for x in selected:
-            print(x, end=' ')
-        print() # 간단하게 줄 바꾸는 방법
-        return    
+        for i in selected:
+            print(i, end=' ')
+        print()
+        return
     
-    for i in range(1, n + 1):
-        if not visited[i]:
-            visited[i] = True
-            selected.append(i)
-            backtracking(depth + 1)
-            visited[i] = False
-            selected.pop() # 재귀를 마치고 다시 진행되기 때문에 append 된 숫자는 결국 전부 pop 된다!!
+    for j in range(n):
+        if visited[j]:
+            continue
+        visited[j] = True
+        selected.append(arr[j])
+        backtracking(depth + 1)
+        visited[j] = False
+        selected.pop() # 재귀를 마치고 다시 진행되기 때문에 append 된 숫자는 결국 전부 pop 된다!!
 
 backtracking(0)
