@@ -15,24 +15,25 @@
 -----------------------------------------
 # BOJ 15651번
 n, m = map(int, input().split())
-
-visited = [False] * (n + 1)
+arr = [_ for _ in range(1, n + 1)]
+visited = [False] * n
 
 selected = []
 
 def backtracking(depth):
     if depth == m:
-        for x in selected:
-            print(x, end=' ')
+        for i in selected:
+            print(i, end=' ')
         print()
-        return    
+        return
     
-    for i in range(1, n + 1):
-        # if not visited[i]: # 순열에서 방문 정보를 삭제하므로써, 중복 허용
-        #     visited[i] = True
-            selected.append(i)
-            backtracking(depth + 1)
-            # visited[i] = False
-            selected.pop()
+    for j in range(n):
+        # if visited[j]: # 순열에서 방문 정보를 삭제하므로써, 중복 허용
+        #     continue
+        # visited[j] = True
+        selected.append(arr[j])
+        backtracking(depth + 1)
+        # visited[j] = False
+        selected.pop()
 
 backtracking(0)
