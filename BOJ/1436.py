@@ -12,4 +12,4 @@ while n:
         n -= 1
     target += 1
 
-print(target)
+print(target - 1)
