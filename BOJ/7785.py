@@ -11,5 +11,5 @@ for i in range(n):
     if log == 'leave':
         dic.pop(name)
 
-for key in sorted(dic.keys(), reverse=True):
+for key in sorted(dic.keys(), reverse=True): # dictionary 는 sort 가 없고, sorted 만 있다 !
     print(key)
