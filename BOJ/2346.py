@@ -21,3 +21,48 @@ while balloon:
     print(num, end=' ')
     balloon.rotate(-next) # next % len() 만큼만 rotate 하는 것이 더 효율적일 듯
     cmd.rotate(-next)
+
+"""
+rotate 구현
+"""
+def orginization(arr : list, target : int):
+    last = len(arr)
+    
+    if target >= 0:
+        '''
+        정방향
+        '''
+        try: # zero division error 방지
+            target = target % last - 1 # 다음 위치까지 길이가 리스트 길이보다 길든 짧든 상관없게 만들기
+            
+            new_arr = arr[target:last] + arr[0:target]
+        except:
+            return    
+    elif target < 0:
+        '''
+        역방향
+        '''
+        try:
+            target = abs(target) % last
+            
+            new_arr = arr[last - target:last] + arr[0:last - target]
+        except:
+            return
+    else:
+        new_arr = arr
+    
+    return new_arr
+
+N = int(input()) 
+arr = [balloon + 1 for balloon in range(N)]
+targets = list(map(int,input().split()))
+
+result = []
+for _ in range(N):
+    result.append(arr.pop(0))
+    target = targets.pop(0)
+    
+    arr = orginization(arr, target = target)
+    targets = orginization(targets, target = target)
+
+print(*result)
