@@ -1,6 +1,5 @@
 # BOJ 24511번
 import sys
-# from collections import deque
 input = sys.stdin.readline
 
 # 자료구조 개수
