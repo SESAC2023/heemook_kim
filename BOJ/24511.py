@@ -25,21 +25,20 @@ b = [deque(_) for _ in b]
 
 result = []
 for i in c:
-    for j in range(n):        
+    for j in range(n):
+        b[j].append(i)
         if a[j]: # stack
-            pass
+            i = b[j].pop()
         else: # queue
-            b[j].append(i)
             i = b[j].popleft()
     result.append(i)
 print(*result)
 
 """
-
 """
 # (2)번 방법
-# stack -> pass
-# queue -> pop한 원소와 자료구조 원소 바꾸기
+# stack -> stack은 넣은 원소 그대로 다시 나오므로 pass
+# queue -> queue는 넣은 원소랑 나오는 원소가 서로 바뀜
 # => 시간 초과
 for i in c:
     for j in range(n):        
@@ -50,20 +49,18 @@ for i in c:
     print(i, end=' ')
 
 """
-
 # (3)번 방법
 # 처음부터 stack은 빼 버리기
 # queue는 자료구조의 원소를 밀어내므로
-# => 결국, 마지막 원소 그대로 출력
+# => 결국, 마지막 원소가 출력됨
 from collections import deque
-ab = zip(a, b) # 자료구조 정보와 자료구조 묶기
 result = deque()
-for i in ab:
-    if not i[0]: # 자료구조 정보가 stack queue인 경우
-        result.append(i[1])
+for i, j in zip(a, b): # 자료구조와 원소 묶기
+    if not i: # queue일 때만
+        result.append(j)
 
 answer = []
 for i in c:
-    result.appendleft(i) # 삽입하면 원래 자료구조의 원소를 뒤로 밀어냄
-    answer.append(result.pop()) # 맨 마지막 원소가 출력
+    result.appendleft(i) # 삽입하면 원래 queue의 원소를 다음 queue로 밀어냄(현재 queue 개수가 삽입할 수열 길이보다 작을 수도 있으므로 꼭 필요)
+    answer.append(result.pop()) # 결국 맨 마지막 원소 출력
 print(*answer)
