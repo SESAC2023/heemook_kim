@@ -22,3 +22,25 @@ print(arr[n//2])
 print(max_cnt[0] if len(max_cnt) == 1 else max_cnt[1])
 # range (max - min)
 print(arr[-1] - arr[0])
+=======================================
+# defaultdict를 이용해서 mode 구하는 방법
+import sys
+from collections import defaultdict
+input = sys.stdin.readline
+
+n = int(input().rstrip())
+
+dictionary = defaultdict(int) # mode 카운트
+for _ in range(n):
+    x = int(input().rstrip())
+    dictionary[x] += 1 # 카운트 + 1
+
+max_cnt = max(dictionary.values())
+
+max_cnts = []
+for key, val in dictionary.items():
+    if val == max_cnt:
+        max_cnts.append(key)
+max_cnts = sorted(max_cnts)
+
+print(max_cnts[0] if len(max_cnts) == 1 else max_cnts[1])
